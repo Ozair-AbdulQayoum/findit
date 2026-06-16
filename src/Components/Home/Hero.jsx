@@ -1,37 +1,37 @@
 import React from "react";
 import { MdStars } from "react-icons/md";
 import { BiPlayCircle } from "react-icons/bi";
-import Img1 from "../../assets/Img-1.png";
+import { heroData } from "./data";
+
 function Hero() {
   return (
     <section className="py-20">
       <div className="text-center">
         <p className="inline-flex items-center gap-2 border rounded-full px-4 py-2 mx-auto">
           <MdStars />
-          Your trusted partner in real estate
+          {heroData.badgeText}
         </p>
 
-        <h1 className="text-5xl font-bold mt-6">
-          Your dream home, just a step away
-        </h1>
+        <h1 className="text-5xl font-bold mt-6">{heroData.title}</h1>
 
         <p className="max-w-2xl mx-auto mt-4 text-gray-600">
-          Discover handpicked properties that match your lifestyle, whether
-          you're buying, selling, or investing.
+          {heroData.description}
         </p>
       </div>
 
       <div className="flex gap-5 justify-center items-center mt-8">
         <button className="px-6 py-3 bg-black text-white rounded-full">
-          Explore Properties
+          {heroData.buttons.primary}
         </button>
 
-        <button className="px-6 py-3 border rounded-full">Book a Visit</button>
+        <button className="px-6 py-3 border rounded-full">
+          {heroData.buttons.secondary}
+        </button>
       </div>
 
       <div className="relative max-w-5xl mx-auto mt-12">
         <img
-          src={Img1}
+          src={heroData.image}
           alt="Real Estate"
           className="w-full h-auto rounded-3xl"
         />

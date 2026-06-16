@@ -1,32 +1,12 @@
 import React from "react";
 import { FaRegDotCircle } from "react-icons/fa";
+import { agents } from "./data";
 
-import Agent1 from "../../assets/Agent1.jpg";
-import Agent2 from "../../assets/Agent2.jpg";
-import Agent3 from "../../assets/Agent3.jpg";
-
-export default function Hero() {
-  const members = [
-    {
-      img: Agent1,
-      name: "Steve Parker",
-      title: "steveparker@example.com",
-    },
-    {
-      img: Agent2,
-      name: "Ingrid Vulk",
-      title: "ingridvulk@example.com",
-    },
-    {
-      img: Agent3,
-      name: "Rachel Gray",
-      title: "rachelgray@example.com",
-    },
-  ];
-
+export default function Agents() {
   return (
     <section className="py-20">
       <div className="max-w-6xl mx-auto px-4">
+        {/* HEADER */}
         <div className="flex flex-col md:flex-row justify-between items-center gap-8">
           <div>
             <h5 className="flex items-center gap-2 text-sm font-medium text-gray-600">
@@ -47,21 +27,23 @@ export default function Hero() {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mt-14">
-          {members.map((member, index) => (
+        {/* CARDS */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mt-14">
+          {agents.map((agent) => (
             <div
-              key={index}
+              key={agent.id}
               className="bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition duration-300"
             >
               <img
-                src={member.img}
-                alt={member.name}
+                src={agent.img}
+                alt={agent.name}
                 className="w-full h-64 object-cover"
               />
 
               <div className="p-5">
-                <h3 className="text-xl font-semibold">{member.name}</h3>
-                <p className="text-gray-500 mt-1">{member.title}</p>
+                <h3 className="text-xl font-semibold">{agent.name}</h3>
+                <p className="text-gray-500 mt-1">{agent.role}</p>
+                <p className="text-sm text-gray-400 mt-2">{agent.email}</p>
               </div>
             </div>
           ))}
