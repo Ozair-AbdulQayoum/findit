@@ -1,20 +1,46 @@
 import React from "react";
 import { FaRegDotCircle } from "react-icons/fa";
-import { benefitsData } from "./data";
+
+import Img1 from "../../assets/Img-2.jpg";
 
 function Benefits() {
-  const { image, titleBadge, heading, description, items, buttonText } =
-    benefitsData;
+  const data = {
+    image: Img1,
+    titleBadge: "Our Benefits",
+    heading: "Building dreams, one home at a time",
+    description:
+      "Our mission goes beyond real estate — it’s about guiding you through one of life’s biggest milestones with heart, expertise, and unwavering commitment.",
+
+    items: [
+      {
+        id: 1,
+        title: "Buy a new home",
+        text: "Discover your dream home effortlessly. Explore diverse properties and expert guidance for a seamless buying experience.",
+      },
+      {
+        id: 2,
+        title: "Rent a home",
+        text: "Discover your perfect rental effortlessly. Explore a diverse variety of listings tailored precisely to suit your unique lifestyle needs.",
+      },
+      {
+        id: 3,
+        title: "Sell a home",
+        text: "Sell confidently with expert guidance and effective strategies, showcasing your property's best features for a successful sale.",
+      },
+    ],
+
+    buttonText: "More about us",
+  };
 
   return (
-    <section className="py-20 max-w-6xl mx-auto px-4">
-      <div className="grid md:grid-cols-2 gap-10 items-center">
+    <section className="py-20 px-6">
+      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
         {/* IMAGE */}
         <div>
           <img
-            src={image}
+            src={data.image}
             alt="Benefits"
-            className="w-full object-cover rounded-3xl"
+            className="w-full rounded-3xl object-cover"
           />
         </div>
 
@@ -22,27 +48,30 @@ function Benefits() {
         <div>
           <h5 className="flex items-center gap-2 text-sm font-medium text-gray-600">
             <FaRegDotCircle />
-            {titleBadge}
+            {data.titleBadge}
           </h5>
 
-          <h2 className="text-4xl font-bold mt-3">{heading}</h2>
+          <h2 className="text-4xl md:text-5xl font-bold mt-3">
+            {data.heading}
+          </h2>
 
-          <p className="text-gray-600 mt-4">{description}</p>
+          <p className="text-gray-600 mt-5">{data.description}</p>
 
           {/* ITEMS */}
-          <div className="mt-8 space-y-6">
-            {items.map((item) => (
+          <div className="mt-10 space-y-6">
+            {data.items.map((item) => (
               <div key={item.id}>
                 <h3 className="text-lg font-semibold">
-                  {item.id.toString().padStart(2, "0")}. {item.title}
+                  {String(item.id).padStart(2, "0")}. {item.title}
                 </h3>
-                <p className="text-gray-600">{item.text}</p>
+                <p className="text-gray-600 mt-1">{item.text}</p>
               </div>
             ))}
           </div>
 
-          <button className="mt-5 bg-black text-white p-5 rounded-full">
-            {buttonText}
+          {/* BUTTON */}
+          <button className="mt-10 px-8 py-4 bg-black text-white rounded-full hover:bg-gray-800 transition">
+            {data.buttonText}
           </button>
         </div>
       </div>

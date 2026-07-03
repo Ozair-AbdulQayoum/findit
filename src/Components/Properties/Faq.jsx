@@ -1,9 +1,45 @@
 import React, { useState } from "react";
 import { FaRegDotCircle } from "react-icons/fa";
-import { faqData } from "./data";
+import Faqimg from "../../assets/Faq-img.png";
 
 export default function Faq() {
   const [openIndex, setOpenIndex] = useState(null);
+
+  const faqData = {
+    badge: "FAQ",
+    title: "Frequently Asked Questions",
+    description:
+      "Got questions? We’ve answered some of the most common ones to guide you through your real estate journey.",
+
+    image: Faqimg,
+
+    faqs: [
+      {
+        q: "How do I start the process of buying a home?",
+        a: "Simply reach out to us for a consultation. We'll discuss your goals, budget, and preferences, then guide you step by step.",
+      },
+      {
+        q: "Do I need to get pre-approved for a mortgage first?",
+        a: "Yes, we recommend it. Pre-approval helps you understand your budget and shows sellers you’re a serious buyer.",
+      },
+      {
+        q: "What types of properties do you specialize in?",
+        a: "We handle residential homes, luxury estates, investment properties, and select commercial spaces.",
+      },
+      {
+        q: "How long does the buying process usually take?",
+        a: "It varies, but most transactions take between 30–60 days once an offer is accepted.",
+      },
+      {
+        q: "Do you assist with selling properties as well?",
+        a: "Absolutely. From pricing strategy to marketing and negotiations, we help sellers achieve the best value for their property.",
+      },
+      {
+        q: "What makes your agency different from others?",
+        a: "Our personalized approach, strong market insights, and commitment to long-term client relationships set us apart.",
+      },
+    ],
+  };
 
   return (
     <section className="py-20">

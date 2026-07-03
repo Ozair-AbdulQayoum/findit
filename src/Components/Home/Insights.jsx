@@ -1,41 +1,78 @@
 import React from "react";
 import { FaRegDotCircle } from "react-icons/fa";
-import { insightsData } from "./data";
+
+import Update1 from "../../assets/Updates-1.jpg";
+import Update2 from "../../assets/Updates-2.jpg";
+import Update3 from "../../assets/Updates-3.jpg";
 
 const Insights = () => {
-  return (
-    <section className="py-20">
-      {/* Header */}
-      <div className="flex flex-col md:flex-row justify-between items-center max-w-6xl mx-auto px-4">
-        <div>
-          <h5 className="flex items-center gap-2 text-sm font-medium text-gray-600">
-            <FaRegDotCircle />
-            {insightsData.badge}
-          </h5>
+  const data = {
+    badge: "Latest News",
+    title: "Insights & Updates",
+    description:
+      "Stay informed with expert tips, market trends, and property advice to guide your real estate journey.",
 
-          <h2 className="text-4xl font-bold mt-3">{insightsData.title}</h2>
+    posts: [
+      {
+        id: 1,
+        image: Update1,
+        title: "The Power of Natural Light in Architectural Design",
+        text: "Natural light plays a crucial role in shaping architectural design, offering both aesthetic and functional benefits.",
+      },
+      {
+        id: 2,
+        image: Update2,
+        title: "Photography: Capturing the Essence of Buildings",
+        text: "Architectural photography goes beyond simply documenting structures; it captures the soul of a building.",
+      },
+      {
+        id: 3,
+        image: Update3,
+        title: "The Future of Smart Homes: Innovative Interior Design",
+        text: "The rise of smart homes is transforming the way we live, blending cutting-edge technology with modern design.",
+      },
+    ],
+  };
+
+  return (
+    <section className="py-20 px-6">
+      <div className="max-w-7xl mx-auto">
+        {/* HEADER */}
+        <div className="flex flex-col md:flex-row justify-between items-center gap-6">
+          <div>
+            <h5 className="flex items-center gap-2 text-sm font-medium text-gray-600">
+              <FaRegDotCircle />
+              {data.badge}
+            </h5>
+
+            <h2 className="text-4xl md:text-5xl font-bold mt-3">
+              {data.title}
+            </h2>
+          </div>
+
+          <p className="max-w-md text-gray-600 text-center md:text-right">
+            {data.description}
+          </p>
         </div>
 
-        <p className="max-w-md mt-4 md:mt-0 text-gray-600">
-          {insightsData.description}
-        </p>
-      </div>
+        {/* CARDS */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-14">
+          {data.posts.map((item) => (
+            <div key={item.id} className="group">
+              <div className="overflow-hidden rounded-3xl">
+                <img
+                  src={item.image}
+                  alt={item.title}
+                  className="w-full h-72 object-cover transition duration-500 group-hover:scale-105"
+                />
+              </div>
 
-      {/* Cards */}
-      <div className="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto mt-12 px-4">
-        {insightsData.posts.map((item) => (
-          <div key={item.id} className="overflow-hidden">
-            <img
-              src={item.image}
-              alt={item.title}
-              className="w-full h-72 object-cover rounded-3xl"
-            />
+              <h3 className="text-xl font-semibold mt-4">{item.title}</h3>
 
-            <h3 className="text-xl font-semibold mt-3">{item.title}</h3>
-
-            <p className="text-gray-600 mt-2">{item.text}</p>
-          </div>
-        ))}
+              <p className="text-gray-600 mt-2">{item.text}</p>
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   );
