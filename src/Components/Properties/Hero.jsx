@@ -112,60 +112,152 @@ export default function LatestProperties() {
   ];
 
   return (
-    <section className="py-20">
-      <div className="max-w-6xl mx-auto px-4 flex flex-col md:flex-row gap-12">
-        {/* LEFT */}
-        <div className="flex-1">
-          <h5 className="flex items-center gap-2 text-sm font-medium text-gray-600">
-            <FaRegDotCircle />
-            Latest Properties
-          </h5>
+    <section className="py-24 bg-gray-50">
+      <div className="max-w-7xl mx-auto px-6 lg:px-8">
+        <div className="grid lg:grid-cols-[420px_1fr] gap-16">
+          {/* ================= Left Content ================= */}
+          <div className="sticky top-28 h-fit">
+            <h5 className="flex items-center gap-2 text-blue-600 font-semibold uppercase tracking-wider">
+              <FaRegDotCircle />
+              Latest Properties
+            </h5>
 
-          <h2 className="text-4xl md:text-5xl font-bold mt-3">
-            Fresh on the market
-          </h2>
+            <h2 className="mt-4 text-4xl lg:text-5xl font-bold leading-tight text-gray-900">
+              Fresh on the market
+            </h2>
 
-          <p className="text-gray-600 mt-4">
-            Stay ahead of the curve with our newest listings.
-          </p>
-        </div>
+            <p className="mt-5 text-gray-600 leading-8">
+              Stay ahead of the curve with our newest listings.
+            </p>
 
-        {/* RIGHT */}
-        <div className="flex-1">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {/* Filter Card */}
+            <div className="mt-10 rounded-3xl bg-white border border-gray-200 shadow-lg p-8">
+              <div>
+                <h3 className="text-2xl font-bold text-gray-900">
+                  Explore :<span className="text-blue-600 ml-2">All</span>
+                </h3>
+
+                <p className="mt-4 text-gray-600 leading-7">
+                  Browse our latest properties—from cozy family homes to luxury
+                  estates. Every listing is carefully selected to suit different
+                  lifestyles, preferences, and budgets.
+                </p>
+              </div>
+
+              {/* Type */}
+              <div className="mt-8">
+                <h4 className="font-semibold text-lg mb-4">Type</h4>
+
+                <div className="flex flex-wrap gap-3">
+                  <button className="px-5 py-2 rounded-full bg-black text-white">
+                    All
+                  </button>
+
+                  <button className="px-5 py-2 rounded-full border border-gray-300 hover:bg-black hover:text-white transition">
+                    Sell
+                  </button>
+
+                  <button className="px-5 py-2 rounded-full border border-gray-300 hover:bg-black hover:text-white transition">
+                    Rent
+                  </button>
+                </div>
+              </div>
+
+              {/* Category */}
+              <div className="mt-8">
+                <h4 className="font-semibold text-lg mb-4">Category</h4>
+
+                <div className="flex flex-wrap gap-3">
+                  {["Apartments", "Condos", "Houses", "Villas"].map((item) => (
+                    <button
+                      key={item}
+                      className="px-5 py-2 rounded-full border border-gray-300 hover:bg-black hover:text-white transition"
+                    >
+                      {item}
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              {/* Location */}
+              <div className="mt-8">
+                <h4 className="font-semibold text-lg mb-4">Location</h4>
+
+                <div className="flex flex-wrap gap-3">
+                  {[
+                    "Brooklyn",
+                    "Manhattan",
+                    "Queens",
+                    "Staten Island",
+                    "The Bronx",
+                  ].map((item) => (
+                    <button
+                      key={item}
+                      className="px-5 py-2 rounded-full border border-gray-300 hover:bg-black hover:text-white transition"
+                    >
+                      {item}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* ================= Right Properties ================= */}
+          <div className="grid md:grid-cols-2 gap-8">
             {properties.map((item) => (
               <div
                 key={item.id}
-                className="bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-xl transition"
+                className="bg-white rounded-3xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-300 group"
               >
-                <img
-                  src={item.image}
-                  alt={item.name}
-                  className="w-full h-56 object-cover"
-                />
+                <div className="overflow-hidden">
+                  <img
+                    src={item.image}
+                    alt={item.name}
+                    className="w-full h-64 object-cover group-hover:scale-105 transition duration-500"
+                  />
+                </div>
 
-                <div className="p-5">
-                  <p className="text-sm text-gray-500">{item.title}</p>
-                  <h3 className="text-xl font-semibold">{item.name}</h3>
+                <div className="p-6">
+                  <span className="text-sm text-blue-600 font-medium">
+                    {item.title}
+                  </span>
 
-                  <div className="flex gap-4 text-sm text-gray-600 mt-2">
-                    <span>🛏 {item.beds}</span>
-                    <span>🛁 {item.baths}</span>
-                    <span>📏 {item.sqft}m²</span>
+                  <h3 className="mt-2 text-2xl font-bold text-gray-900">
+                    {item.name}
+                  </h3>
+
+                  <div className="flex flex-wrap gap-5 mt-5 text-gray-600">
+                    <span>🛏 {item.beds} Beds</span>
+                    <span>🛁 {item.baths} Baths</span>
+                    <span>📐 {item.sqft} m²</span>
                   </div>
 
-                  <div className="flex justify-between items-center mt-4">
-                    <p className="font-bold">{item.price}</p>
+                  <div className="mt-6 pt-6 border-t border-gray-200 flex items-center justify-between">
+                    <div>
+                      <p className="text-sm text-gray-500">Starting From</p>
 
-                    <div className="flex items-center gap-2">
+                      <h4 className="text-2xl font-bold text-blue-600">
+                        {item.price}
+                      </h4>
+                    </div>
+
+                    <div className="flex items-center gap-3">
                       <img
                         src={item.agentImg}
                         alt={item.agent}
-                        className="w-8 h-8 rounded-full"
+                        className="w-12 h-12 rounded-full object-cover"
                       />
-                      <span className="text-sm text-gray-600">
-                        {item.agent}
-                      </span>
+
+                      <div>
+                        <p className="font-semibold text-gray-900">
+                          {item.agent}
+                        </p>
+
+                        <span className="text-sm text-gray-500">
+                          Property Agent
+                        </span>
+                      </div>
                     </div>
                   </div>
                 </div>
