@@ -114,15 +114,15 @@ export default function LatestProperties() {
   return (
     <section className="py-24 bg-gray-50">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        <div className="grid lg:grid-cols-[420px_1fr] gap-16">
-          {/* ================= Left Content ================= */}
-          <div className="sticky top-28 h-fit">
+        <div className="grid grid-cols-1 lg:grid-cols-[420px_1fr] gap-10 lg:gap-16 items-start">
+          {/* ================= Left ================= */}
+          <div className="relative h-fit self-start lg:sticky lg:top-28">
             <h5 className="flex items-center gap-2 text-blue-600 font-semibold uppercase tracking-wider">
               <FaRegDotCircle />
               Latest Properties
             </h5>
 
-            <h2 className="mt-4 text-4xl lg:text-5xl font-bold leading-tight text-gray-900">
+            <h2 className="mt-4 text-4xl lg:text-5xl font-bold leading-tight">
               Fresh on the market
             </h2>
 
@@ -131,33 +131,33 @@ export default function LatestProperties() {
             </p>
 
             {/* Filter Card */}
-            <div className="mt-10 rounded-3xl bg-white border border-gray-200 shadow-lg p-8">
+            <div className="mt-10 rounded-3xl border border-gray-200 bg-white p-8 shadow-lg">
+              {/* Explore */}
+
               <div>
-                <h3 className="text-2xl font-bold text-gray-900">
-                  Explore :<span className="text-blue-600 ml-2">All</span>
+                <h3 className="text-2xl font-bold">
+                  Explore : <span className="text-blue-600">All</span>
                 </h3>
 
                 <p className="mt-4 text-gray-600 leading-7">
                   Browse our latest properties—from cozy family homes to luxury
                   estates. Every listing is carefully selected to suit different
-                  lifestyles, preferences, and budgets.
+                  lifestyles and budgets.
                 </p>
               </div>
 
               {/* Type */}
               <div className="mt-8">
-                <h4 className="font-semibold text-lg mb-4">Type</h4>
+                <h4 className="mb-4 text-lg font-semibold">Type</h4>
 
                 <div className="flex flex-wrap gap-3">
-                  <button className="px-5 py-2 rounded-full bg-black text-white">
+                  <button className="rounded-full bg-black px-5 py-2 text-white">
                     All
                   </button>
-
-                  <button className="px-5 py-2 rounded-full border border-gray-300 hover:bg-black hover:text-white transition">
+                  <button className="rounded-full border border-gray-300 px-5 py-2 hover:bg-black hover:text-white transition">
                     Sell
                   </button>
-
-                  <button className="px-5 py-2 rounded-full border border-gray-300 hover:bg-black hover:text-white transition">
+                  <button className="rounded-full border border-gray-300 px-5 py-2 hover:bg-black hover:text-white transition">
                     Rent
                   </button>
                 </div>
@@ -165,13 +165,13 @@ export default function LatestProperties() {
 
               {/* Category */}
               <div className="mt-8">
-                <h4 className="font-semibold text-lg mb-4">Category</h4>
+                <h4 className="mb-4 text-lg font-semibold">Category</h4>
 
                 <div className="flex flex-wrap gap-3">
                   {["Apartments", "Condos", "Houses", "Villas"].map((item) => (
                     <button
                       key={item}
-                      className="px-5 py-2 rounded-full border border-gray-300 hover:bg-black hover:text-white transition"
+                      className="rounded-full border border-gray-300 px-5 py-2 hover:bg-black hover:text-white transition"
                     >
                       {item}
                     </button>
@@ -181,7 +181,7 @@ export default function LatestProperties() {
 
               {/* Location */}
               <div className="mt-8">
-                <h4 className="font-semibold text-lg mb-4">Location</h4>
+                <h4 className="mb-4 text-lg font-semibold">Location</h4>
 
                 <div className="flex flex-wrap gap-3">
                   {[
@@ -193,7 +193,7 @@ export default function LatestProperties() {
                   ].map((item) => (
                     <button
                       key={item}
-                      className="px-5 py-2 rounded-full border border-gray-300 hover:bg-black hover:text-white transition"
+                      className="rounded-full border border-gray-300 px-5 py-2 hover:bg-black hover:text-white transition"
                     >
                       {item}
                     </button>
@@ -203,37 +203,35 @@ export default function LatestProperties() {
             </div>
           </div>
 
-          {/* ================= Right Properties ================= */}
-          <div className="grid md:grid-cols-2 gap-8">
+          {/* ================= Right ================= */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {properties.map((item) => (
               <div
                 key={item.id}
-                className="bg-white rounded-3xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-300 group"
+                className="overflow-hidden rounded-3xl bg-white shadow-md transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl group"
               >
                 <div className="overflow-hidden">
                   <img
                     src={item.image}
                     alt={item.name}
-                    className="w-full h-64 object-cover group-hover:scale-105 transition duration-500"
+                    className="h-64 w-full object-cover transition duration-500 group-hover:scale-105"
                   />
                 </div>
 
                 <div className="p-6">
-                  <span className="text-sm text-blue-600 font-medium">
+                  <span className="text-sm font-medium text-blue-600">
                     {item.title}
                   </span>
 
-                  <h3 className="mt-2 text-2xl font-bold text-gray-900">
-                    {item.name}
-                  </h3>
+                  <h3 className="mt-2 text-2xl font-bold">{item.name}</h3>
 
-                  <div className="flex flex-wrap gap-5 mt-5 text-gray-600">
+                  <div className="mt-5 flex flex-wrap gap-5 text-gray-600">
                     <span>🛏 {item.beds} Beds</span>
                     <span>🛁 {item.baths} Baths</span>
                     <span>📐 {item.sqft} m²</span>
                   </div>
 
-                  <div className="mt-6 pt-6 border-t border-gray-200 flex items-center justify-between">
+                  <div className="mt-6 flex items-center justify-between border-t border-gray-200 pt-6">
                     <div>
                       <p className="text-sm text-gray-500">Starting From</p>
 
@@ -246,14 +244,11 @@ export default function LatestProperties() {
                       <img
                         src={item.agentImg}
                         alt={item.agent}
-                        className="w-12 h-12 rounded-full object-cover"
+                        className="h-12 w-12 rounded-full object-cover"
                       />
 
                       <div>
-                        <p className="font-semibold text-gray-900">
-                          {item.agent}
-                        </p>
-
+                        <p className="font-semibold">{item.agent}</p>
                         <span className="text-sm text-gray-500">
                           Property Agent
                         </span>
